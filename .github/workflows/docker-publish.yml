@@ -27,5 +27,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.JFROG_REGISTRY }}.jfrog.io/mytestrepo/my-nginx-image:latest .
-          docker push ${{ secrets.JFROG_REGISTRY }}.jfrog.io/mytestrepo/my-nginx-image:latest
+          docker build -t ${{ secrets.JFROG_REGISTRY }}/nginx-jfrog-ecr-repo/my-nginx-image:latest .
+          docker push ${{ secrets.JFROG_REGISTRY }}/nginx-jfrog-ecr-repo/my-nginx-image:latest
