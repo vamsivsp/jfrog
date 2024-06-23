@@ -23,7 +23,7 @@ jobs:
         run: sudo systemctl restart docker
 
       - name: Log in to JFrog Artifactory
-        run: echo "${{ secrets.JFROG_PASSWORD }}" | docker login -u "${{ secrets.JFROG_USERNAME }}" --password-stdin "${{ secrets.JFROG_REGISTRY }}.jfrog.io"
+        run: echo "${{ secrets.JFROG_PASSWORD }}" | docker login -u "${{ secrets.JFROG_USERNAME }}" --password-stdin "${{ secrets.JFROG_REGISTRY }}"
 
       - name: Build and push Docker image
         run: |
