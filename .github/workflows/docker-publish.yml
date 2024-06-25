@@ -23,9 +23,9 @@ jobs:
       run: |
         docker build -t my-nginx-image:latest .
 
-  #   - name: Save Docker image as a tar file
-  #     run: |
-  #       docker save my-nginx-image:latest -o my-nginx-image.tar
+    - name: Save Docker image as a tar file
+      run: |
+        docker save my-nginx-image:latest -o my-nginx-image.tar
 
   #   - name: Upload Docker image artifact
   #     uses: actions/upload-artifact@v2
@@ -53,4 +53,4 @@ jobs:
         ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
       run: |
         # Push the Docker image tar file using curl
-        curl -uadmin:${{ secrets.ARTIFACTORY_PASSWORD }} -T my-nginx-image:latest "${{ secrets.ARTIFACTORY_URL }}/artifactory/example-repo-local/my-nginx-image:latest"
+        curl -uadmin:${{ secrets.ARTIFACTORY_PASSWORD }} -T my-nginx-image.tar "${{ secrets.ARTIFACTORY_URL }}/artifactory/example-repo-local/my-nginx-image.tar"
