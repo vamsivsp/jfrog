@@ -45,14 +45,12 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: docker-image
+        path: my-nginx-image.tar
 
     - name: Push Docker image to JFrog
       env:
         JFROG_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
         JFROG_URL: ${{ secrets.JFROG_URL }}
       run: |
-        # Extract the downloaded artifact
-        tar -xvf docker-image
-
         # Push the Docker image tar file using curl
         curl -uadmin:${{ secrets.JFROG_PASSWORD }} -T my-nginx-image.tar "${{ secrets.JFROG_URL }}/artifactory/example-repo-local/my-nginx-image.tar"
