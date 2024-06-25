@@ -19,15 +19,15 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Log in to JFrog Artifactory
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ secrets.ARTIFACTORY_URL }}
-          username: ${{ secrets.ARTIFACTORY_USERNAME }}
-          password: ${{ secrets.ARTIFACTORY_PASSWORD }}
+      # - name: Log in to JFrog Artifactory
+      #   uses: docker/login-action@v2
+      #   with:
+      #     registry: ${{ secrets.ARTIFACTORY_URL }}
+      #     username: ${{ secrets.ARTIFACTORY_USERNAME }}
+      #     password: ${{ secrets.ARTIFACTORY_PASSWORD }}
 
-      - name: Build Docker image
-        run: docker build -t ${{ secrets.ARTIFACTORY_URL }}/my-repo/nginx:latest .
+      # - name: Build Docker image
+      #   run: docker build -t ${{ secrets.ARTIFACTORY_URL }}/my-repo/nginx:latest .
 
       - name: Push Docker image
-        run: docker push ${{ secrets.ARTIFACTORY_URL }}/my-repo/nginx:latest
+        run: curl -uadmin:${{ secrets.ARTIFACTORY_TOKEN }} -T Dockerfile "https://b8fd-111-93-244-226.ngrok-free.app/artifactory/example-repo-local/demo"
